@@ -11,6 +11,8 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.SurfaceHolder;
 import android.view.SurfaceView;
+import android.view.View;
+import android.view.View.OnClickListener;
 import android.widget.Toast;
 
 
@@ -44,8 +46,49 @@ public class MediaPlayerVideoActivity extends Activity implements
         holder.addCallback(this);
         holder.setType(SurfaceHolder.SURFACE_TYPE_PUSH_BUFFERS);
         extras = getIntent().getExtras();
-
+        
+        findViewById(R.id.playback_pause).setOnClickListener(new OnClickListener() {
+          @Override
+          public void onClick(View v) {
+            mMediaPlayer.pause();
+          }
+        });
+        
+        findViewById(R.id.playback_start).setOnClickListener(new OnClickListener() {
+          @Override
+          public void onClick(View v) {
+            mMediaPlayer.start();
+          }
+        });
+        
+        findViewById(R.id.skip_backward).setOnClickListener(new OnClickListener() {
+          @Override
+          public void onClick(View v) {
+            int pos = mMediaPlayer.getCurrentPosition() - 10 * 1000;
+            if (pos < 0) pos = 0;
+            mMediaPlayer.seekTo(pos);
+          }
+        });
+        
+        findViewById(R.id.skip_forward).setOnClickListener(new OnClickListener() {
+          @Override
+          public void onClick(View v) {
+            int pos = mMediaPlayer.getCurrentPosition() + 10 * 1000;
+            if (pos > mMediaPlayer.getDuration()) pos = mMediaPlayer.getDuration() - 1 * 1000;
+            mMediaPlayer.seekTo(pos);
+          }
+        });
     }
+
+    private void playVideo(Integer Media) {
+        doCleanUp();
+        try {
+
+            /*
+             * TODO: Set path variable to progressive streamable mp4 or
+             * 3gpp format URL. Http protocol should be used.
+             * Mediaplayer can only play "progressive streamable
+             * contents" which basically means:    }
 
     private void playVideo(Integer Media) {
         doCleanUp();
