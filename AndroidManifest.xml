@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
   package="com.komamitsu.android.videoplayer" android:versionCode="1" android:versionName="0.0.1-SNAPSHOT">
-
+  <uses-sdk android:targetSdkVersion="8" android:minSdkVersion="8" />
+  <uses-permission android:name="android.permission.INTERNET"/>
   <application android:icon="@drawable/icon" android:label="@string/app_name">
     <activity android:name=".UrlInputActivity">
       <intent-filter>
@@ -9,9 +10,9 @@
         <category android:name="android.intent.category.LAUNCHER" />
       </intent-filter>
     </activity>
-    <activity android:name=".MediaPlayerVideoActivity" android:screenOrientation="landscape">
+    <activity android:name=".MediaPlayerVideoActivity"
+        android:configChanges="orientation|screenSize">
     </activity>
   </application>
 
 </manifest>
-

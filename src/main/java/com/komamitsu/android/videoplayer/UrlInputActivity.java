@@ -17,6 +17,7 @@ public class UrlInputActivity extends Activity {
         super.onCreate(icicle);
         setContentView(R.layout.url_input);
         final EditText url = (EditText) findViewById(R.id.url);
+        url.setText("http://clips.vorwaerts-gmbh.de/big_buck_bunny.mp4");
         Button submitBtn = (Button) findViewById(R.id.submit);
         submitBtn.setOnClickListener(new OnClickListener() {
           @Override
