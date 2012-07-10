@@ -8,6 +8,7 @@
         android:id="@+id/url"
 	    android:layout_width="match_parent"
 	    android:layout_height="wrap_content"
+	    android:text="http://clips.vorwaerts-gmbh.de/big_buck_bunny.mp4"
     />
     
     <Button
